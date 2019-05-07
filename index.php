@@ -46,6 +46,93 @@
             </div>
         </div>
     </div>
+<script>
+$(function() {
+
+    
+
+    
+    
+    
+
+  $("#name").focusout(function() {
+      check_name();
+    });
+  $("#email").focusout(function() {
+    check_email();
+  });
+  $("#username").focusout(function() {
+      check_username();
+    });
+function check_name() {
+        
+    var fullname_length = $("#name").val().length;
+    
+    if( $.trim( $('#name').val() ) == '' ){
+      $("#fullname_error_message").html("Input is blank!");
+      $("#fullname_error_message").show();
+      error_fullname = true;
+      $("#name").addClass("is-invalid");
+      }else if(fullname_length < 5 || fullname_length > 50) {
+      $("#fullname_error_message").html("Should be between 5-50 characters");
+      $("#fullname_error_message").show();
+      error_fullname = true;
+      $("#name").addClass("is-invalid");
+      }else{
+      $("#fullname_error_message").hide();
+      $("#name").removeClass("is-invalid");
+    }
+  }
+function check_email() {
+    
+    var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+    var email_length = $("#email").val().length;
+    
+    if( $.trim( $('#email').val() ) == '' ){
+      $("#email_error_message").html("Input is blank!");
+      $("#email_error_message").show();
+      error_email = true;
+      $("#email").addClass("is-invalid");
+      }else if(!(pattern.test($("#email").val()))) {
+      $("#email_error_message").html("Invalid email address");
+      $("#email_error_message").show();
+      error_email = true;
+      $("#email").addClass("is-invalid");
+      } else {
+      $("#email_error_message").hide();
+      $("#email").removeClass("is-invalid");
+      }  
+  }
+function check_username() {
+        
+    var fullname_length = $("#username").val().length;
+    
+    if( $.trim( $('#username').val() ) == '' ){
+      $("#username_error_message").html("Input is blank!");
+      $("#username_error_message").show();
+      error_fullname = true;
+      $("#username").addClass("is-invalid");
+      }else if(fullname_length < 5 || fullname_length > 50) {
+      $("#username_error_message").html("Should be between 5-30 characters");
+      $("#username_error_message").show();
+      error_fullname = true;
+      $("#username").addClass("is-invalid");
+      }else{
+      $("#username_error_message").hide();
+      $("#username").removeClass("is-invalid");
+    }
+  }    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+});
+</script>
 </main>
 </body>
 </html>
