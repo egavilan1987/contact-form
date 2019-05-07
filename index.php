@@ -47,13 +47,8 @@
         </div>
     </div>
 <script>
-$(function() {
 
-    
-
-    
-    
-    
+$(document).ready(function(){
 
   $("#name").focusout(function() {
       check_name();
@@ -63,6 +58,9 @@ $(function() {
   });
   $("#username").focusout(function() {
       check_username();
+    });
+  $("#message").focusout(function() {
+      check_message();
     });
 function check_name() {
         
@@ -121,16 +119,26 @@ function check_username() {
       $("#username_error_message").hide();
       $("#username").removeClass("is-invalid");
     }
-  }    
+  }
+function check_message() {
+        
+    var message_length = $("#message").val().length;
     
-    
-    
-    
-    
-    
-    
-    
-    
+    if( $.trim( $('#message').val() ) == '' ){
+      $("#username_error_message").html("Input is blank!");
+      $("#username_error_message").show();
+      error_fullname = true;
+      $("#message").addClass("is-invalid");
+      }else if(fullname_length < 5 || fullname_length > 50) {
+      $("#username_error_message").html("Should be between 5-30 characters");
+      $("#username_error_message").show();
+      error_fullname = true;
+      $("#message").addClass("is-invalid");
+      }else{
+      $("#username_error_message").hide();
+      $("#message").removeClass("is-invalid");
+    }
+  }
 });
 </script>
 </main>
